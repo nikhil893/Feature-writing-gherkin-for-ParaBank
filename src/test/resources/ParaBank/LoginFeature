@@ -1,0 +1,73 @@
+Feature: Login Feature
+
+
+When start testing application following below steps:
+1) Analysis
+2) divide the app into logical boundaries also called as modules also called as features
+    a- login
+       TestCases 1
+              positive scenario
+              negative scenario
+       TestCases 2
+                  positive scenario
+                  negative scenario
+    b- registration
+    c- open new account
+    d- transfer fund
+    e- Request loan
+
+
+@Login @positive
+
+Scenario: User is able to login with correct username and password
+Given: User is on login page
+When: User is enter username as a "john" and password as a "demo"
+Then: user is able to login in the app
+And: User is able to see account overview page
+
+@Login @Negative
+
+Scenario: User is not able to login with incorrect username and password
+Given: User is on login page
+When: User is enter username as a"skahbjhb" and password as a "qhihih"
+Then: User is able to login in the app
+And: User is able to see account overview page
+OR
+Then: User is not able to login with in app
+And: user is displaying error message"invalid credential"
+
+
+Scenario: user is not able to login when username and password field is blank
+Given: user is on login page
+When: User clicked on submit button without field any username and password
+And: user is able to login into application
+Then: User is able to see account overview page
+
+
+scenario: username password field size
+Given: User is on login page
+When: User is enter username as "john" and password is more than 8 digits
+Then: user is not able to login into the app
+And: user is displaying error message"invalid credential"
+
+
+Scenario: session length
+Given: user is on login page
+When: User is enter username and password after 60 seconds
+And: Login page automatically left
+Then: user is not able to see login page for 30 seconds
+
+Scenario: should not be allowed more than three times
+Given: i am is on login page
+When: I entering wrong username and password more than 3 times
+Then: My password is locked
+And: I am not able to login
+
+
+
+
+
+
+
+
+

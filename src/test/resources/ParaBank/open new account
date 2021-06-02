@@ -1,0 +1,24 @@
+Feature: Open new Account
+
+@positive
+Scenario: User is able to create new account
+Given: user is on open new account page
+When: user is able to see "Checking" account and "Saving" account
+And: user is able to select "Checking" and "Saving" account for opening
+And: User has "50" in account
+And: user is able to transfer fund from existing account to new account
+Then: user is able to click on "open new account button"
+And: User is able to open new account
+And: user is able to deposit 1st amount as "1000"
+
+@negative:
+Scenario: User is not able to create new account
+Given: User is on open new account page
+When: user is able to see "Checking" account and "Saving" account
+And: user is able to select "Checking" and "Saving" account
+And: User has "30" in account
+And: User is not able to transfer amount from existing to new account
+Then: User is not able to open new account
+and: User displaying error message "should be more than "50" amount in your account for opening new account"
+
+

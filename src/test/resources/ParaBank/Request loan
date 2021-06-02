@@ -1,0 +1,22 @@
+Feature: Request Loan
+
+@positive
+Scenario: User is able to request for loan
+Given: user is on request loan page
+When: user is able to see Apply for a Loan page
+And: user is select loan pay amount "5000"
+And: user is select down payment as "1000"
+And: user is select from account as a "1234"
+Then: User is clicking on apply now button
+And: user getting message is "your Loan is approved"
+
+@negative
+Scenario: User is not able to apply for loan
+Given: user is on request for loan page
+When: user is able to see apply for a loan page
+And: user  is select loan pay amount "50000"
+And: user monthly transactions is not more then "2000"
+And: user is select down payment amount "20000"
+And: User is select from account as "1234"
+Then: User is clicking on apply now button
+And: user displaying message "as per your monthly transactions your not authorized more then "200000" amount for loan"

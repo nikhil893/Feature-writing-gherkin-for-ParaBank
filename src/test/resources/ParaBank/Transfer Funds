@@ -1,0 +1,32 @@
+Feature: Transfer Fund
+
+Scenario: user is able to transfer fund from one account to another account
+Given: user is on transfer fund page
+When: user is select amount as "100"
+And: user is select to account as "1234"
+And: User is select from account as "4321"
+And: User is clicked on Transfer button
+Then: user is able to see transfer complete message
+And: 100 is deducted from account"1234" and credited to "4321"account.
+
+Scenario: user is not able to transfer fund if from account has low balance
+Given: user is on fund transfer page
+When: user select amount as "500"
+And: User has only "100" in his account
+Then: user is not able to transfer fund from my account to another account
+And: user is displaying error message of insufficient amount
+
+Scenario: Enter spacial chars in the amount should not be allowed
+Given: user is on fund transfer page
+When: user is select amount"@#$"
+And: user is select to account as "!#$%"
+And: User is select from account as "!#%^"
+Then: User is not able to transfer fund to another account
+And: user displaying message as "enter correct amount"
+
+Scenario: user should not be able to transfer fund to same user account
+ Given: user is on transfer fund page
+ When: user is transfer fund from his account
+ And: user is transfer fund to his account
+ Then: User is not able to transfer fund
+ And: User displaying message "you can not transfer amount to same user account"
